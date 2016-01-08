@@ -36,7 +36,6 @@ function stanford_indies_mods_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == "stanford_jumpstart_homepage_dashboard_form" && $_GET['q'] == 'admin/config/header-image') {
     $theme = variable_get("theme_default", "stanford_framework");
     $style = theme_get_setting('styles', $theme);
-    //dpm($form);
     unset($form['intro']);
     unset($form['choosehome']['#title']);
     unset($form['choosehome']['#description']);
