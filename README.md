@@ -6,4 +6,4 @@ Maintainer: [boznik](https://github.com/boznik)
 
 [Changelog.txt](CHANGELOG.txt)
 
-Modificatioin module for INDIES
+Modification module for INDIES
