@@ -1,0 +1,52 @@
+<?php
+/**
+ * @file
+ * Code for the Stanford Indies Site Modifications
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function stanford_indies_mods_menu() {
+  $items['admin/config/header-image'] = array(
+    'title'            => 'Header Image',
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('stanford_jumpstart_homepage_dashboard_form'),
+    'access arguments' => array('access administration pages'),
+    'type'             => MENU_NORMAL_ITEM,
+    'menu_name'        => 'menu-admin-shortcuts',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function stanford_indies_mods_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == "stanford_jumpstart_homepage_dashboard_form" && $_GET['q'] == 'admin/config/header-image') {
+    $theme = variable_get("theme_default", "stanford_framework");
+    $style = theme_get_setting('styles', $theme);
+    //dpm($form);
+    unset($form['intro']);
+    unset($form['choosehome']['#title']);
+    unset($form['choosehome']['#description']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_panama']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_panama_news_events']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_palm']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_palm_news_events']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_mayfield']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_mayfield_news_events']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_serra']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_serra_news_events']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_lomita']['site_admin']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_lomita']['thumb']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_lomita']['selector']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_lomita']['title']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_lomita']['description']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_lomita']['context_name']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_lomita']['body_class']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_lomita']['selectedstate']);
+    unset($form['choosehome']['layouts']['stanford_jumpstart_home_lomita']['light_dark']);
+    unset($form['design_container']);
+  }
+}

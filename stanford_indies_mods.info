@@ -1,0 +1,7 @@
+name = Stanford Indies Mods
+description = Stanford Indies Modifications Module
+core = 7.x
+package = Stanford
+version = 7.x-1.0
+project = Stanford
+project status url = https://github.com/SU-SWS/stanford_indies_mods
