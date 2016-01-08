@@ -12,11 +12,21 @@ function stanford_indies_mods_menu() {
     'title'            => 'Header Image',
     'page callback'    => 'drupal_get_form',
     'page arguments'   => array('stanford_jumpstart_homepage_dashboard_form'),
-    'access arguments' => array('access administration pages'),
+    'access callback'  => 'stanford_indies_header_access',
+    'access arguments' => array('administrator', 'site owner'),
     'type'             => MENU_NORMAL_ITEM,
     'menu_name'        => 'menu-admin-shortcuts',
   );
   return $items;
+}
+
+function stanford_indies_header_access($roles) {
+  global $user;
+  if (in_array($roles, $user->roles)) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
 }
 
 /**
