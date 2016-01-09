@@ -8,14 +8,13 @@
  * Implements hook_menu().
  */
 function stanford_indies_mods_menu() {
-  $items['admin/config/header-image'] = array(
+  $items['admin/stanford/jumpstart/shortcuts/site-actions/header-image'] = array(
     'title'            => 'Header Image',
     'page callback'    => 'drupal_get_form',
     'page arguments'   => array('stanford_jumpstart_homepage_dashboard_form'),
     'access callback'  => 'stanford_indies_header_access',
     'access arguments' => array('administrator', 'site owner'),
     'type'             => MENU_NORMAL_ITEM,
-    'menu_name'        => 'menu-admin-shortcuts',
   );
   return $items;
 }
@@ -33,7 +32,7 @@ function stanford_indies_header_access($roles) {
  * Implements hook_form_alter().
  */
 function stanford_indies_mods_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == "stanford_jumpstart_homepage_dashboard_form" && $_GET['q'] == 'admin/config/header-image') {
+  if ($form_id == "stanford_jumpstart_homepage_dashboard_form" && $_GET['q'] == 'admin/stanford/jumpstart/shortcuts/site-actions/header-image') {
     $theme = variable_get("theme_default", "stanford_framework");
     $style = theme_get_setting('styles', $theme);
     unset($form['intro']);
