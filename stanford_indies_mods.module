@@ -36,6 +36,7 @@ function stanford_indies_header_access($roles) {
  */
 function stanford_indies_mods_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == "stanford_jumpstart_homepage_dashboard_form" && current_path() == 'admin/stanford/jumpstart/shortcuts/site-actions/header-image') {
+    $form['#attached']['css'] = array(drupal_get_path('module', 'stanford_indies_mods') . '/stanford_indies_mods.css');
     $theme = variable_get("theme_default", "stanford_framework");
     $style = theme_get_setting('styles', $theme);
     unset($form['intro']);
