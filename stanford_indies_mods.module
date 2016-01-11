@@ -19,6 +19,9 @@ function stanford_indies_mods_menu() {
   return $items;
 }
 
+/**
+ * Custom permission function allowing administrator and site owner to access the Header Image page.
+ */
 function stanford_indies_header_access($roles) {
   global $user;
   if (in_array($roles, $user->roles)) {
@@ -32,7 +35,7 @@ function stanford_indies_header_access($roles) {
  * Implements hook_form_alter().
  */
 function stanford_indies_mods_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == "stanford_jumpstart_homepage_dashboard_form" && $_GET['q'] == 'admin/stanford/jumpstart/shortcuts/site-actions/header-image') {
+  if ($form_id == "stanford_jumpstart_homepage_dashboard_form" && current_path() == 'admin/stanford/jumpstart/shortcuts/site-actions/header-image') {
     $theme = variable_get("theme_default", "stanford_framework");
     $style = theme_get_setting('styles', $theme);
     unset($form['intro']);
